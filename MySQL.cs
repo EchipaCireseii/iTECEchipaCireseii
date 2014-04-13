@@ -606,7 +606,8 @@ namespace iTEC_Cireseii
         {
             try
             {
-                connection.Open();
+                if(connection.State == ConnectionState.Closed)
+                    connection.Open();
                 MySqlDataAdapter mySqlDataAdapter = new MySqlDataAdapter("SELECT ID,Name FROM Products", connection);
                 DataTable dataTable = new DataTable();
                 mySqlDataAdapter.Fill(dataTable);
